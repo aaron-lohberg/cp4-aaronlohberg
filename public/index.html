@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+  <title>Life: A Game</title>
+</head>
+
+<body>
+  <div class="header">
+    <div class="title">
+      <h1>Life: A Game</h1>
+    </div>
+  </div>
+<div class="testContainer">
+    <div id="leftContent">
+    </div>
+    <div id="mainContent">
+        <div id="index" class="content">
+  <div class="heading">
+    <h2>Add a Person!</h2>
+  </div>
+  <div class="add">
+    <div class="form">
+      <input v-model="name" placeholder="Name">
+      <input v-model="level" placeholder="Starting Level(1-10)">
+      <input v-model="happiness" placeholder ="Starting Happiness (1-50)">
+      <p></p>
+      <button @click="upload">Begin</button>
+    </div>
+    <div class="actions" v-if="addPerson">
+      <button @click="addWealth">Become Rich</button>
+      <button @click="addMarried">Get Married</button>
+      <button @click="addBaptism">Get Baptized</button>
+      <button @click="addKids">Have Kids</button>
+      <button @click="addMotorcycle">Buy a Motorcycle</button>
+    </div>
+  </div>
+    <h2>Current Selected Person</h2>
+  <div id="app" class="content">
+    <div class="upload" v-if="addPerson">
+      <h2>Name: {{ addPerson.name }} <BR> Level: {{addPerson.level}} <BR> Happiness: {{addPerson.happiness}}</h2>
+    </div>
+    <h2>Leaderboards:</h2>
+    <section class="image-gallery">
+      <div class="image" v-for="person in people">
+        <p>Name: {{person.name}}</p>
+        <p>Level: {{person.level}}</p>
+        <p>Happiness: {{person.happiness}}</p>
+      </div>
+  </div>
+  <div class="heading">
+    <h2>Murder a person :(</h2>
+  </div>
+  <div class="edit">
+    <div class="form">
+      <input v-model="findName" placeholder="Search">
+      <div class="suggestions" v-if="suggestions.length > 0">
+        <div class="suggestion" v-for="s in suggestions" @click="selectPerson(s)">{{s.name}}
+        </div>
+      </div>
+    </div>
+    <div class="actions" v-if="findName">
+      <button class="buttonz" @click="deletePerson(findPerson)">Delete Person</button>
+    </div>
+  </div>
+  <BR><BR><BR><BR><BR><BR><BR><BR><BR><BR>
+  <footer>Here's a link to the source code: <a href="https://github.com/BYU-CS-260-Winter-2019/lab-4-aaron-lohberg">cp-4-aaron-lohberg</a></footer>
+
+</div>
+<div id="rightContent">
+</div>
+</div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.7/vue.js" integrity="sha256-g+Q8DFAmG5+eyRPSydX0LY4TfjsL11XSDrIGerbbEdA=" crossorigin="anonymous"></script>
+  <script src="/script.js"></script>
+</body>
+
+</html>
